@@ -35,11 +35,13 @@ while run:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_UP:
-                y_right_paddle = y_right_paddle - 40
-            if event.key == pygame.K_DOWN:
-                y_right_paddle = y_right_paddle + 40
+        # if event.type == pygame.KEYDOWN: # event dla naciskania strzałek up i down
+        #     if event.key == pygame.K_UP:
+        #         y_right_paddle = y_right_paddle - 40
+        #     if event.key == pygame.K_DOWN:
+        #         y_right_paddle = y_right_paddle + 40
+        elif event.type == pygame.MOUSEMOTION:
+            y_right_paddle = event.pos[1]
 
     screen.fill("black")
 
