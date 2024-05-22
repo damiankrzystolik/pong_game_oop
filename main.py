@@ -28,18 +28,19 @@ R_BALL = 10
 x_ball = WIDTH / 2
 y_ball = random.randint(R_BALL, HEIGHT - R_BALL)
 # Prędkość poruszania się piłki
-ball_speed_x = 5
-ball_speed_y = 5
+speed = -4
+ball_speed_x = speed
+ball_speed_y = speed
 
 while run:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
-        # if event.type == pygame.KEYDOWN: # event dla naciskania strzałek up i down
-        #     if event.key == pygame.K_UP:
-        #         y_right_paddle = y_right_paddle - 40
-        #     if event.key == pygame.K_DOWN:
-        #         y_right_paddle = y_right_paddle + 40
+        if event.type == pygame.KEYDOWN: # event dla naciskania strzałek up i down
+            if event.key == pygame.K_UP:
+                y_right_paddle = y_right_paddle - 40
+            if event.key == pygame.K_DOWN:
+                y_right_paddle = y_right_paddle + 40
         elif event.type == pygame.MOUSEMOTION:
             y_right_paddle = event.pos[1]
 
@@ -50,10 +51,17 @@ while run:
     y_ball += ball_speed_y
 
     # Odbijanie piłki od krawędzi ekranu
-    if x_ball <= 0 or x_ball >= WIDTH:
-        ball_speed_x = -ball_speed_x
-    if y_ball <= 0 or y_ball >= HEIGHT:
+    if y_ball - R_BALL <= 0 or y_ball + R_BALL >= HEIGHT:
         ball_speed_y = -ball_speed_y
+    if x_ball + R_BALL >= WIDTH - PADDLE_WIDHT:
+        if y_ball >= y_right_paddle and y_ball <= y_right_paddle + PADDLE_HEIGHT:
+            ball_speed_x = -ball_speed_x
+    if x_ball + R_BALL >= WIDTH:
+        ball_speed_x = -ball_speed_x
+        print('punkt')
+    if x_ball - R_BALL <= PADDLE_WIDHT:
+        ball_speed_x = -ball_speed_x
+
 
     y_left_paddle = y_ball - PADDLE_HEIGHT / 2
 
