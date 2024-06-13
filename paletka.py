@@ -27,13 +27,13 @@ class Paddle:
             if self.posy + self.height >= self.settings.screen_height:
                 self.posy = self.settings.screen_height - self.height
 
-    def update_left_paddle(self, posy_ball):
+    def update_left_paddle(self, posy_ball, paddle_speed):
         # pomysł z neta
-        COMPUTER_SPEED = 7  # Zmień tę wartość, aby utrudnić lub ułatwić grę
+
         if posy_ball > self.posy + self.height / 2:
-            self.posy += COMPUTER_SPEED
+            self.posy += paddle_speed
         if posy_ball < self.posy + self.height / 2:
-            self.posy -= COMPUTER_SPEED
+            self.posy -= paddle_speed
 
         if self.posy + self.height > self.settings.screen_height:
             self.posy = self.settings.screen_height - self.height

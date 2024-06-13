@@ -1,25 +1,33 @@
-import pygame.font
+import pygame
+
+# button class
+
 
 class Button:
-    def __init__(self, screen, msg):
-        self.screen = screen.screen
-        self.screen_rect = self.screen.get_rect()
+    def __init__(self, x, y, image, scale):
 
-        self.width, self.height = 200, 50
-        self.button_color = (0, 135, 0)
-        self.text_color = (255, 255, 255)
-        self.font = pygame.font.SysFont('ChakraPetch-Regular.ttf', 50)
+        width = image.get_width()
+        height = image.get_height()
+        self.image = pygame.transform.scale(image, (int(width * scale), int(height * scale)))
+        self.rect = self.image.get_rect()
+        self.rect.topleft = (x, y)
+        self.clicked = False
 
-        self.rect = pygame.Rect(0, 0, self.width, self.height)
-        self.rect.center = self.screen_rect.center
+    def draw(self, surface):
+        action = False
+        # get mouse position
+        pos = pygame.mouse.get_pos()
+        #  check mouseover and clicked conditions
+        if self.rect.collidepoint(pos):
+            if pygame.mouse.get_pressed()[0] is True and self.clicked is False:  #  zmiany wg chat gpt
+                self.clicked = True
+                action = True
 
-        self._prep_msg(msg)
+        if pygame.mouse.get_pressed()[0] is False:
+            self.clicked = False
 
-    def _prep_msg(self, msg):
-        self.msg_image = self.font.render(msg, True, self.text_color, self.button_color)
-        self.msg_image_rect = self.msg_image.get_rect()
-        self.msg_image_rect.center = self.rect.center
+        # draw button on screen
+        surface.blit(self.image, (self.rect.x, self.rect.y))
 
-    def draw_button(self):
-        self.screen.fill(self.button_color, self.rect)
-        self.screen.blit(self.msg_image, self.msg_image_rect)
+        return action
+

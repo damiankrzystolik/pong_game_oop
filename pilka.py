@@ -12,7 +12,7 @@ class Ball:
         self.posx = (self.settings.screen_width / 2) - self.r
         self.posy = random.randint(self.r, self.settings.screen_height - self.r)
         self.color = self.settings.bg_color
-        self.speed = 5
+        self.speed = 7
         self.ball_speed_x = self.speed
         self.ball_speed_y = self.speed
 
@@ -40,13 +40,13 @@ class Ball:
 
         elif self.posx + self.r >= self.settings.screen_width - right_paddle.width:
             if self.posy >= right_paddle.posy and self.posy <= right_paddle.posy + right_paddle.height:
-                print(f'przed-y {self.ball_speed_y}')
+                # print(f'przed-y {self.ball_speed_y}')
                 # self.ball_speed_x = -self.ball_speed_x
 
                 hit_offset = ((self.posy - right_paddle.posy) / right_paddle.height)
-                print(f' factor {hit_offset}')
+                # print(f' factor {hit_offset}')
                 i = abs((hit_offset - 0.5) * 2) + 1
-                print(f' factor iii {i}')
+                # print(f' factor iii {i}')
 
                 if hit_offset >= 0 and hit_offset < 0.1:
                     if self.ball_speed_y < 0:
@@ -55,7 +55,7 @@ class Ball:
                     else:
                         self.ball_speed_y = -self.speed * 2
                         self.ball_speed_x = -self.speed * 2
-                    print(f'segment 1: {self.ball_speed_y}')
+                    # print(f'segment 1: {self.ball_speed_y}')
 
 
                 elif hit_offset >= 0.1 and hit_offset < 0.2:
@@ -64,7 +64,7 @@ class Ball:
                         self.ball_speed_y = -(self.speed * 1.2)
                     else:
                         self.ball_speed_y = (self.speed * 1.2)
-                    print(f'segmen 2: {self.ball_speed_y}')
+                    # print(f'segmen 2: {self.ball_speed_y}')
 
                 elif hit_offset >= 0.2 and hit_offset < 0.35:
                     self.ball_speed_x = -self.ball_speed_x * 1.1
@@ -72,7 +72,7 @@ class Ball:
                         self.ball_speed_y = -(self.speed * 1.1)
                     else:
                         self.ball_speed_y = (self.speed * 1.1)
-                    print(f'segmen 3: {self.ball_speed_y}')
+                    # print(f'segmen 3: {self.ball_speed_y}')
 
                 elif hit_offset >= 0.35 and hit_offset < 0.65:
                     # self.speed = 5
@@ -81,7 +81,7 @@ class Ball:
                         self.ball_speed_y = -(self.speed * 1)
                     else:
                         self.ball_speed_y = (self.speed * 1)
-                    print(f'segmen 4: {self.ball_speed_y}')
+                    # print(f'segmen 4: {self.ball_speed_y}')
 
                 elif hit_offset >= 0.65 and hit_offset < 0.8:
                     self.ball_speed_x = -self.ball_speed_x * 1.1
@@ -89,7 +89,7 @@ class Ball:
                         self.ball_speed_y = -(self.speed)
                     else:
                         self.ball_speed_y = (self.speed)
-                    print(f'segmen 5: {self.ball_speed_y}')
+                    # print(f'segmen 5: {self.ball_speed_y}')
 
                 elif hit_offset >= 0.8 and hit_offset < 0.9:
                     self.ball_speed_x = -self.ball_speed_x * 1.1
@@ -97,7 +97,7 @@ class Ball:
                         self.ball_speed_y = -(self.speed * 1.2)
                     else:
                         self.ball_speed_y = (self.speed * 1.2)
-                    print(f'segmen 6: {self.ball_speed_y}')
+                    # print(f'segmen 6: {self.ball_speed_y}')
 
                 elif hit_offset >= 0.9 and hit_offset <= 1:
                     if self.ball_speed_y < 0:
@@ -106,8 +106,8 @@ class Ball:
                     else:
                         self.ball_speed_y = self.ball_speed_y * 1.1
                         self.ball_speed_x = -self.ball_speed_x * 1.1
-                    print(f'segmen 7: {self.ball_speed_y}')
-                print(f'xxxxxx: {self.ball_speed_x}')
+                    # print(f'segmen 7: {self.ball_speed_y}')
+                # print(f'xxxxxx: {self.ball_speed_x}')
 
 
 
@@ -154,13 +154,13 @@ class Ball:
 
         elif self.posx + self.r >= self.settings.screen_width - right_paddle.width:
             if self.posy >= right_paddle.posy and self.posy <= right_paddle.posy + right_paddle.height:
-                print(f'przed-y {self.ball_speed_y}')
+                # print(f'przed-y {self.ball_speed_y}')
                 # self.ball_speed_x = -self.ball_speed_x
 
                 hit_offset = ((self.posy - right_paddle.posy) / right_paddle.height)
-                print(f' factor {hit_offset}')
+                # print(f' factor {hit_offset}')
                 i = abs((hit_offset - 0.5) * 2) + 1
-                print(f' factor iii {i}')
+                # print(f' factor iii {i}')
 
                 if hit_offset >= 0 and hit_offset < 0.1:
                     if self.ball_speed_y < 0:
@@ -169,7 +169,7 @@ class Ball:
                     else:
                         self.ball_speed_y = -self.speed * i
                         self.ball_speed_x = -self.speed * i
-                    print(f'segment 1: {self.ball_speed_y}')
+                    # print(f'segment 1: {self.ball_speed_y}')
 
 
                 elif hit_offset >= 0.1 and hit_offset < 0.2:
@@ -178,7 +178,7 @@ class Ball:
                         self.ball_speed_y = -(self.speed * i)
                     else:
                         self.ball_speed_y = (self.speed * i)
-                    print(f'segmen 2: {self.ball_speed_y}')
+                    # print(f'segmen 2: {self.ball_speed_y}')
 
                 elif hit_offset >= 0.2 and hit_offset < 0.35:
                     self.ball_speed_x = -self.ball_speed_x * i
@@ -186,7 +186,7 @@ class Ball:
                         self.ball_speed_y = -(self.speed * i)
                     else:
                         self.ball_speed_y = (self.speed * i)
-                    print(f'segmen 3: {self.ball_speed_y}')
+                    # print(f'segmen 3: {self.ball_speed_y}')
 
                 elif hit_offset >= 0.35 and hit_offset < 0.65:
                     # self.speed = 5
@@ -196,7 +196,7 @@ class Ball:
                         self.ball_speed_y = (self.speed * (0.1 - i))
                     else:
                         self.ball_speed_y = -(self.speed * (0.1 - i))
-                    print(f'segmen 4: {self.ball_speed_y}')
+                    # print(f'segmen 4: {self.ball_speed_y}')
 
                 elif hit_offset >= 0.65 and hit_offset < 0.8:
                     self.ball_speed_x = -self.ball_speed_x * i
@@ -204,7 +204,7 @@ class Ball:
                         self.ball_speed_y = -(self.speed * i)
                     else:
                         self.ball_speed_y = (self.speed * i)
-                    print(f'segmen 5: {self.ball_speed_y}')
+                    # print(f'segmen 5: {self.ball_speed_y}')
 
                 elif hit_offset >= 0.8 and hit_offset < 0.9:
                     self.ball_speed_x = -self.ball_speed_x * i
@@ -212,7 +212,7 @@ class Ball:
                         self.ball_speed_y = -(self.speed * i)
                     else:
                         self.ball_speed_y = (self.speed * i)
-                    print(f'segmen 6: {self.ball_speed_y}')
+                    # print(f'segmen 6: {self.ball_speed_y}')
 
                 elif hit_offset >= 0.9 and hit_offset <= 1:
                     if self.ball_speed_y < 0:
@@ -221,8 +221,8 @@ class Ball:
                     else:
                         self.ball_speed_y = self.ball_speed_y * i
                         self.ball_speed_x = -self.ball_speed_x * i
-                    print(f'segmen 7: {self.ball_speed_y}')
-                print(f'xxxxxx: {self.ball_speed_x}\n')
+                    # print(f'segmen 7: {self.ball_speed_y}')
+                # print(f'xxxxxx: {self.ball_speed_x}\n')
 
 
 
@@ -237,7 +237,7 @@ class Ball:
             #     self.ball_speed_y = abs(self.ball_speed_y)
 
 
-        elif self.posx - self.r <= left_paddle.width:
+        elif self.posx - self.r < left_paddle.width:
             if self.posy >= left_paddle.posy and self.posy <= left_paddle.posy + left_paddle.height:
                 self.ball_speed_x = -self.ball_speed_x
 
