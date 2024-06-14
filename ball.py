@@ -11,7 +11,7 @@ class Ball:
         self.r = 10
         self.posx = (self.settings.screen_width / 2) - self.r
         self.posy = random.randint(self.r, self.settings.screen_height - self.r)
-        self.color = self.settings.bg_color
+        self.color = self.settings.color_black
         self.speed = 7
         self.ball_speed_x = self.speed
         self.ball_speed_y = self.speed
@@ -151,6 +151,7 @@ class Ball:
 
         elif self.posy - self.r <= 0 or self.posy + self.r >= self.settings.screen_height:
             self.ball_speed_y = -self.ball_speed_y
+            pygame.mixer.Sound.play(self.settings.ball_sound_2)
 
         elif self.posx + self.r >= self.settings.screen_width - right_paddle.width:
             if self.posy >= right_paddle.posy and self.posy <= right_paddle.posy + right_paddle.height:
@@ -163,6 +164,7 @@ class Ball:
                 # print(f' factor iii {i}')
 
                 if hit_offset >= 0 and hit_offset < 0.1:
+                    pygame.mixer.Sound.play(self.settings.ball_sound_1)
                     if self.ball_speed_y < 0:
                         self.ball_speed_y = self.ball_speed_y * i
                         self.ball_speed_x = -self.ball_speed_x * i
@@ -173,6 +175,7 @@ class Ball:
 
 
                 elif hit_offset >= 0.1 and hit_offset < 0.2:
+                    pygame.mixer.Sound.play(self.settings.ball_sound_1)
                     self.ball_speed_x = -self.ball_speed_x * i
                     if self.ball_speed_y < 0:
                         self.ball_speed_y = -(self.speed * i)
@@ -181,6 +184,7 @@ class Ball:
                     # print(f'segmen 2: {self.ball_speed_y}')
 
                 elif hit_offset >= 0.2 and hit_offset < 0.35:
+                    pygame.mixer.Sound.play(self.settings.ball_sound_1)
                     self.ball_speed_x = -self.ball_speed_x * i
                     if self.ball_speed_y < 0:
                         self.ball_speed_y = -(self.speed * i)
@@ -189,6 +193,7 @@ class Ball:
                     # print(f'segmen 3: {self.ball_speed_y}')
 
                 elif hit_offset >= 0.35 and hit_offset < 0.65:
+                    pygame.mixer.Sound.play(self.settings.ball_sound_1)
                     # self.speed = 5
                     self.ball_speed_x = self.ball_speed_x * (0.2 - i)
 
@@ -199,6 +204,7 @@ class Ball:
                     # print(f'segmen 4: {self.ball_speed_y}')
 
                 elif hit_offset >= 0.65 and hit_offset < 0.8:
+                    pygame.mixer.Sound.play(self.settings.ball_sound_1)
                     self.ball_speed_x = -self.ball_speed_x * i
                     if self.ball_speed_y < 0:
                         self.ball_speed_y = -(self.speed * i)
@@ -207,6 +213,7 @@ class Ball:
                     # print(f'segmen 5: {self.ball_speed_y}')
 
                 elif hit_offset >= 0.8 and hit_offset < 0.9:
+                    pygame.mixer.Sound.play(self.settings.ball_sound_1)
                     self.ball_speed_x = -self.ball_speed_x * i
                     if self.ball_speed_y < 0:
                         self.ball_speed_y = -(self.speed * i)
@@ -215,6 +222,7 @@ class Ball:
                     # print(f'segmen 6: {self.ball_speed_y}')
 
                 elif hit_offset >= 0.9 and hit_offset <= 1:
+                    pygame.mixer.Sound.play(self.settings.ball_sound_1)
                     if self.ball_speed_y < 0:
                         self.ball_speed_y = -self.speed * i
                         self.ball_speed_x = -self.speed * i
@@ -240,6 +248,7 @@ class Ball:
         elif self.posx - self.r < left_paddle.width:
             if self.posy >= left_paddle.posy and self.posy <= left_paddle.posy + left_paddle.height:
                 self.ball_speed_x = -self.ball_speed_x
+                pygame.mixer.Sound.play(self.settings.ball_sound_1)
 
         if abs(self.ball_speed_x) < 5: # żeby piłeczka anie zwalniała za bardzo
             if self.ball_speed_x < 0:
