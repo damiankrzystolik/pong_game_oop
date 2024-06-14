@@ -4,9 +4,8 @@ from settings import Settings
 
 
 class Paddle:
-    def __init__(self, pongGame, posx, posy, width, height, color):
-        self.screen = pongGame.screen  # nie rozumiem jak to działa -
-                                        # odniesienie do aktualnego egzemplarza klasy PongGame
+    def __init__(self, ponggame, posx, posy, width, height, color):
+        self.screen = ponggame.screen
         self.settings = Settings()
         self.posx = posx
         self.posy = posy
@@ -40,9 +39,6 @@ class Paddle:
         if self.posy < 0:
             self.posy = 0
 
-
     def draw(self):
         self.paddle = pygame.Rect(self.posx, self.posy, self.width, self.height)
         pygame.draw.rect(self.screen, self.color, self.paddle)
-
-

@@ -1,7 +1,5 @@
 import pygame
 
-# button class
-
 
 class Button:
     def __init__(self, x, y, image, scale):
@@ -18,16 +16,15 @@ class Button:
         # get mouse position
         pos = pygame.mouse.get_pos()
         #  check mouseover and clicked conditions
-        if self.rect.collidepoint(pos):
-            if pygame.mouse.get_pressed()[0] is True and self.clicked is False:  #  zmiany wg chat gpt
-                self.clicked = True
-                action = True
-
         if pygame.mouse.get_pressed()[0] is False:
             self.clicked = False
+
+        if self.rect.collidepoint(pos):
+            if pygame.mouse.get_pressed()[0] is True and self.clicked is False:
+                self.clicked = True
+                action = True
 
         # draw button on screen
         surface.blit(self.image, (self.rect.x, self.rect.y))
 
         return action
-
