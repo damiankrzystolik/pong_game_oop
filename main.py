@@ -168,7 +168,7 @@ class PongGame:
             self.ball.reset_ball()
 
     def _win_lose_condition(self):
-        if self.p_points >= 1:
+        if self.p_points >= 9:
             self.game_active = False
             self.menu_state = None
             if self.sound:
@@ -182,7 +182,7 @@ class PongGame:
                 self.main = False
                 self.sound = True
 
-        if self.c_points >=1:
+        if self.c_points >=9:
             self.game_active = False
             self.menu_state = None
             if self.sound:
