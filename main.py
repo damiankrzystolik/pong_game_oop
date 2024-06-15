@@ -29,7 +29,7 @@ class PongGame:
         self._create_buttons()
         self.font = pygame.font.SysFont('Arial', 30)
         self.start_time = pygame.time.get_ticks()
-        self.paddle_speed = 7  # Zmień tę wartość, aby utrudnić lub ułatwić grę
+        self.paddle_speed = 10  # Zmień tę wartość, aby utrudnić lub ułatwić grę
         self.sound = True
 
     def _load_images(self):
@@ -179,6 +179,7 @@ class PongGame:
                 self.c_points = 0
                 self.ball.reset_ball()
                 self.menu_state = 'main'
+                self.main = False
                 self.sound = True
 
         if self.c_points >= 9:
@@ -192,6 +193,7 @@ class PongGame:
                 self.c_points = 0
                 self.ball.reset_ball()
                 self.menu_state = 'main'
+                self.paused = False
                 self.sound = True
 
     def menu(self):
