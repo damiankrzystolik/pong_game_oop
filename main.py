@@ -5,7 +5,7 @@ from settings import Settings
 from paddle import Paddle
 from ball import Ball
 from score import Score
-from button111 import Button
+from button import Button
 
 
 class PongGame:
@@ -46,7 +46,7 @@ class PongGame:
         self.win_img = pygame.image.load('images/win.png').convert_alpha()
 
     def _create_buttons(self):
-        self.resume_btn = Button((self.settings.screen_width / 2) - self.resume_img.get_width() / 2, 200,
+        self.resume_btn = Button((self.settings.screen_width / 2) - self.resume_img.get_width() / 2, 250,
                                  self.resume_img, 1)
         self.option_btn = Button((self.settings.screen_width / 2) - self.option_img.get_width() / 2, 350,
                                  self.option_img, 1)
@@ -168,7 +168,7 @@ class PongGame:
             self.ball.reset_ball()
 
     def _win_lose_condition(self):
-        if self.p_points >= 9:
+        if self.p_points >= 1:
             self.game_active = False
             self.menu_state = None
             if self.sound:
@@ -182,7 +182,7 @@ class PongGame:
                 self.main = False
                 self.sound = True
 
-        if self.c_points >= 9:
+        if self.c_points >=1:
             self.game_active = False
             self.menu_state = None
             if self.sound:
